@@ -1,22 +1,22 @@
 Somatic Required Plugins
 =========
 
-A library intended for mu-plugins and used in [wd_s](https://github.com/WebDevStudios/wd_s) that allows a theme or plugin to filter the list of required plugins so that:
+A library intended for mu-plugins and used in [somatic_framework](https://github.com/somaticstudios/somatic-framework) that allows a theme or plugin to filter the list of required plugins so that:
 * The deactivate links are removed.
 * Plugins are automatically activated (if they are in the plugins directory)
-* More to come.
+This is useful when dealing with structural declarations like custom post types and taxonomies that should exist no matter what theme is in use.
 
 #### Example Usage:
 ```php
 <?php
 /**
- * Add required plugins to WDS_Required_Plugins
+ * Add required plugins to somatic_required_plugins
  *
  * @param  array $required Array of required plugins in `plugin_dir/plugin_file.php` form
  *
  * @return array           Modified array of required plugins
  */
-function wds_required_plugins_add( $required ) {
+function soma_required_plugins_add( $required ) {
 	
 	$required = array_merge( $required, array(
 		'jetpack/jetpack.php',
@@ -25,7 +25,7 @@ function wds_required_plugins_add( $required ) {
 
 	return $required;
 }
-add_filter( 'wds_required_plugins', 'wds_required_plugins_add' );
+add_filter( 'soma_required', 'soma_required_plugins_add' );
 ```
 
 #### Changelog
