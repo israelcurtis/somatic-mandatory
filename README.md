@@ -1,4 +1,4 @@
-WDS Required Plugins
+Somatic Required Plugins
 =========
 
 A library intended for mu-plugins and used in [wd_s](https://github.com/WebDevStudios/wd_s) that allows a theme or plugin to filter the list of required plugins so that:
@@ -29,7 +29,5 @@ add_filter( 'wds_required_plugins', 'wds_required_plugins_add' );
 ```
 
 #### Changelog
-* 0.1.1
-	* Automatically activate required plugins (if they are available).
-* 0.1.0
-	* Hello World.
+* 0.2
+	* Init fork from WebDevStudios 
