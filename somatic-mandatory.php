@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Somatic Required Plugins
+Plugin Name: Somatic Mandatory
 Plugin URI: http://somaticstudios.com
-Description: Make certain plugins required so that they cannot be (easily) deactivated.
+Description: Make certain plugins required so that they cannot be (easily) deactivated, also execute crucial code
 Author: Somatic Studios
 Version: 0.2
-Domain: somatic-required-plugins
+Domain: somatic-mandatory
 License: GPLv2
 Path: languages
 */
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @subpackage Project
  */
-class soma_required_plugins {
+class soma_mandatory {
 
 	/**
 	 * Instance of this class.
@@ -145,4 +145,4 @@ class soma_required_plugins {
 	}
 
 }
-soma_required_plugins::init();
+soma_mandatory::init();
