@@ -1,4 +1,4 @@
-Somatic Required Plugins
+Somatic Mandatory for Wordpress
 =========
 
 A library intended for mu-plugins and used in [somatic_framework](https://github.com/somaticstudios/somatic-framework) that allows a theme or plugin to filter the list of required plugins so that:
