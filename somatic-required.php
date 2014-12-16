@@ -1,12 +1,11 @@
 <?php
 /*
-Plugin Name: WDS Required Plugins
-Plugin URI: http://webdevstudios.com
+Plugin Name: Somatic Required Plugins
+Plugin URI: http://somaticstudios.com
 Description: Make certain plugins required so that they cannot be (easily) deactivated.
-Author: WebDevStudios
-Author URI: http://webdevstudios.com
-Version: 0.1.1
-Domain: wds-required-plugins
+Author: Somatic Studios
+Version: 0.2
+Domain: somatic-required-plugins
 License: GPLv2
 Path: languages
 */
@@ -23,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @subpackage Project
  */
-class WDS_Required_Plugins {
+class soma_required_plugins {
 
 	/**
 	 * Instance of this class.
@@ -138,5 +137,12 @@ class WDS_Required_Plugins {
 		}
 	}
 
+	public function modify_debug() {
+		// hide STRICT errors with debugging on (which seems to override php.ini settings)
+		if ( WP_DEBUG ) {
+		    error_reporting( E_ALL & ~E_STRICT );
+		}
+	}
+
 }
-WDS_Required_Plugins::init();
+soma_required_plugins::init();
