@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Somatic Mandatory
+Plugin Name: Somatic Mandatory Plugins
 Plugin URI: http://somaticstudios.com
 Description: Make certain plugins required so that they cannot be (easily) deactivated, also execute crucial code
 Author: Somatic Studios
-Version: 0.2
+Version: 0.3
 Domain: somatic-mandatory
 License: GPLv2
 Path: languages
@@ -27,7 +27,7 @@ class soma_mandatory {
 	/**
 	 * Instance of this class.
 	 *
-	 * @var WDS_Required_Plugins object
+	 * @var soma_mandatory object
 	 */
 	public static $instance = null;
 
@@ -40,13 +40,12 @@ class soma_mandatory {
 	/**
 	 * Creates or returns an instance of this class.
 	 * @since  0.1.0
-	 * @return WDS_Required_Plugins A single instance of this class.
+	 * @return soma_mandatory A single instance of this class.
 	 */
 	public static function init() {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
-
 		return self::$instance;
 	}
 
@@ -58,8 +57,8 @@ class soma_mandatory {
 	private function __construct() {
 		add_filter( 'admin_init', array( $this, 'activate_if_not' ) );
 		add_filter( 'plugin_action_links', array( $this, 'filter_plugin_links' ), 10, 2 );
-		// load text domain
-		add_action( 'plugins_loaded', array( $this, 'l10n' ) );
+		//// load text domain (not updated from original branch)
+		// add_action( 'plugins_loaded', array( $this, 'l10n' ) );
 	}
 
 	/**
@@ -95,26 +94,28 @@ class soma_mandatory {
 
 		// Remove deactivate link for required plugins
 		if( array_key_exists( 'deactivate', $actions ) && in_array( $plugin_file, $this->get_required_plugins() ) ) {
-			$actions['deactivate'] = sprintf( '<span style="color: #888">%s</span>', __( 'WDS Required Plugin', 'wds-required-plugins' ) );
+			$actions['deactivate'] = '<span style="color: #888">Somatic Mandatory Plugin</span>';
+			// $actions['deactivate'] = sprintf( '<span style="color: #888">%s</span>', __( 'WDS Required Plugin', 'wds-required-plugins' ) );
 		}
 
 		return $actions;
 	}
 
 	/**
-	 * Get the plugins that are required for the project. Plugins will be registered by the wds_required_plugins filter
+	 * Get the plugins that are required for the project. Plugins will be registered by the somatic_mandatory_list filter
 	 *
 	 * @since  0.1.0
 	 *
 	 * @return array
 	 */
 	public function get_required_plugins() {
-		return (array) apply_filters( 'wds_required_plugins', array() );
+		return (array) apply_filters( 'somatic_mandatory_list', array() );
 	}
 
 	/**
 	 * Load this library's text domain
 	 * @since  0.2.1
+	 * NOT USED SINCE SOMATIC FORK
 	 */
 	public function l10n() {
 		// Only do this one time

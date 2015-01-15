@@ -7,17 +7,16 @@ A library intended for mu-plugins and used in [somatic_framework](https://github
 This is useful when dealing with structural declarations like custom post types and taxonomies that should exist no matter what theme is in use.
 
 #### Example Usage:
-```php
 <?php
 /**
- * Add required plugins to somatic_required_plugins
+ * Add required plugins to somatic_mandatory_list
  *
  * @param  array $required Array of required plugins in `plugin_dir/plugin_file.php` form
  *
  * @return array           Modified array of required plugins
  */
-function soma_required_plugins_add( $required ) {
-	
+function somatic_mandatory_add( $required ) {
+
 	$required = array_merge( $required, array(
 		'jetpack/jetpack.php',
 		'sample-plugin/sample-plugin.php',
@@ -25,9 +24,9 @@ function soma_required_plugins_add( $required ) {
 
 	return $required;
 }
-add_filter( 'soma_required', 'soma_required_plugins_add' );
-```
+add_filter( 'somatic_mandatory_list', 'somatic_mandatory_add' );
+?>
 
 #### Changelog
-* 0.2
-	* Init fork from WebDevStudios 
+* 0.3
+	* Init fork from WebDevStudios
