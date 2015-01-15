@@ -7,6 +7,7 @@ A library intended for mu-plugins and used in [somatic_framework](https://github
 This is useful when dealing with structural declarations like custom post types and taxonomies that should exist no matter what theme is in use.
 
 #### Example Usage:
+```php
 <?php
 /**
  * Add required plugins to somatic_mandatory_list
@@ -26,7 +27,7 @@ function somatic_mandatory_add( $required ) {
 }
 add_filter( 'somatic_mandatory_list', 'somatic_mandatory_add' );
 ?>
-
+```
 #### Changelog
 * 0.3
 	* Init fork from WebDevStudios
